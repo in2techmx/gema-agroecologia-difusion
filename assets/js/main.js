@@ -1,23 +1,37 @@
 /**
- * GEMA AGROECOLOGÍA — INTERACTIVIDAD DE VANGUARDIA
- * In2techmx Standard · Spotlight Magnético · 3D Tilt · Calculadora de Impacto
+ * GEMA AGROECOLOGÍA — SCROLLYTELLING & EXPERIENCIA EDITORIAL
+ * In2techmx Craft Standard · Animaciones fluidas, IntersectionObserver y Telemetría
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
+  initScrollytellingActs();
   initTiltAndSpotlight();
-  initZonificationSelector();
+  initHorizontalTrackControls();
+  initTerritorySelector();
   initCropsFilter();
   initImpactCalculator();
   initScrollFab();
 });
 
-/* --- 1. Modo Dual Eco-Tech (Dark / Light) --- */
+const initZonificationSelector = initTerritorySelector;
+
+function initTiltAndSpotlight() {
+  const elements = document.querySelectorAll('.channel-narrative-card, .node-story-panel, .botanic-item-card');
+  elements.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      el.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+      el.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    });
+  });
+}
+
+/* --- 1. MODO DUAL ECO-TECH (DARK / LIGHT) --- */
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle-btn');
   const themeIcon = document.getElementById('theme-icon');
   
-  // Recuperar preferencia guardada o respetar sistema
   const savedTheme = localStorage.getItem('gema_theme') || 
     (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   
@@ -40,121 +54,156 @@ function initThemeToggle() {
   }
 }
 
-/* --- 2. 3D Tilt y Foco Magnético (Técnica Rodri González & Jack) --- */
-function initTiltAndSpotlight() {
-  const tiles = document.querySelectorAll('.channel-tile, .pillar-card, .crop-card');
+/* --- 2. SCROLLYTELLING: ACTOS DE SUELO VIVO & PINNING VISUAL --- */
+const ACT_VISUALS = {
+  'act-1': {
+    src: 'assets/img/gema_living_soil.jpg',
+    title: 'Horizontes de Luvisol Crómico (Kankab)',
+    meta: 'Suelo vivo no laboreado &middot; Red fúngica micorrízica intacta'
+  },
+  'act-2': {
+    src: 'assets/img/gema_greenhouse.jpg',
+    title: 'Biofábrica & Manejo de Brotes en Raíz Viva',
+    meta: 'Bokashi fermentado a 58°C &middot; Microaspersión bioclimática'
+  },
+  'act-3': {
+    src: 'assets/img/meliponario_chimay.jpg',
+    title: 'Santuario Biocultural Melipona beecheii',
+    meta: 'Jobones ancestrales mayas &middot; Biosensor de inocuidad total'
+  }
+};
 
-  tiles.forEach((tile) => {
-    tile.addEventListener('mousemove', (e) => {
-      const rect = tile.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+function initScrollytellingActs() {
+  const acts = document.querySelectorAll('.scrolly-story-act');
+  const stickyImg = document.getElementById('sticky-visual-img');
+  const captionTitle = document.getElementById('sticky-caption-title');
+  const captionMeta = document.getElementById('sticky-caption-meta');
 
-      // Variables CSS para el resplandor magnético
-      tile.style.setProperty('--mouse-x', `${x}px`);
-      tile.style.setProperty('--mouse-y', `${y}px`);
+  if (!acts.length || !stickyImg) return;
 
-      // Solo aplicar rotación 3D en dispositivos con puntero fino
-      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && tile.classList.contains('channel-tile')) {
-        const deltaX = (x - rect.width / 2) / (rect.width / 2);
-        const deltaY = (y - rect.height / 2) / (rect.height / 2);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        acts.forEach(a => a.classList.remove('active'));
+        entry.target.classList.add('active');
 
-        const rotX = (-(deltaY * 6)).toFixed(2);
-        const rotY = (deltaX * 6).toFixed(2);
-
-        tile.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px) scale3d(1.02, 1.02, 1.02)`;
+        const actId = entry.target.getAttribute('data-act');
+        const visualData = ACT_VISUALS[actId];
+        if (visualData) {
+          stickyImg.style.opacity = '0.3';
+          stickyImg.style.transform = 'scale(1.04)';
+          setTimeout(() => {
+            stickyImg.src = visualData.src;
+            captionTitle.textContent = visualData.title;
+            captionMeta.innerHTML = visualData.meta;
+            stickyImg.style.opacity = '1';
+            stickyImg.style.transform = 'scale(1)';
+          }, 200);
+        }
       }
     });
-
-    tile.addEventListener('mouseleave', () => {
-      if (tile.classList.contains('channel-tile')) {
-        tile.style.transform = '';
-      }
-    });
+  }, {
+    threshold: 0.55
   });
+
+  acts.forEach(act => observer.observe(act));
 }
 
-/* --- 3. Selector Interactivo de Zonificación (10.00 HA) --- */
-const ZONES_DATA = {
+/* --- 3. EXPEDICIÓN GLOBAL: CONTROL HORIZONTAL --- */
+function initHorizontalTrackControls() {
+  const track = document.getElementById('global-nodes-track');
+  const prevBtn = document.getElementById('nodes-prev-btn');
+  const nextBtn = document.getElementById('nodes-next-btn');
+
+  if (!track) return;
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -420, behavior: 'smooth' });
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: 420, behavior: 'smooth' });
+    });
+  }
+}
+
+/* --- 4. SELECTOR INTERACTIVO DE TERRITORIO (10.00 HA) --- */
+const TERRITORY_STAGES = {
   'piloto': {
-    title: 'Unidad Piloto Demostrativa (1.00 HA / 10,000 m²)',
-    badge: 'Fase Activa de Validación',
-    surface: '1.00 Hectárea (10,000 m²)',
-    details: 'Alberga el Invernadero Tecnificado de 200 m² con microaspersión, camas biointensivas de suelo mejorado Luvisol (Kankab), nave de bioinsumos (Bokashi y biol), deshidratado solar y bodega de resguardo técnico.',
+    title: 'Unidad Piloto & Living Lab (1.00 HA / 10,000 m²)',
+    badge: 'Validación Activa',
+    desc: 'Invernadero bioclimático de 200 m² para brotes vivos los 365 días, camas biointensivas en suelo mejorado Kankab, biofábrica de Bokashi térmico y secado solar pasivo.',
     tags: ['Invernadero 200 m²', 'Bokashi Activo', 'Microaspersión', 'Pozo N° 1']
   },
   'etapa-1': {
-    title: 'Etapa 1: Escalamiento Habanero & Meliponas (3.00 HA)',
-    badge: 'Horizonte Meses 6 a 12',
-    surface: '3.00 Hectáreas (30,000 m²)',
-    details: 'Área para cultivo intensivo a cielo abierto con fertirriego por goteo de Chile Habanero (Capsicum chinense DO Península de Yucatán), floricultura comestible, apiario/meliponario tradicional de abeja nativa y módulo de talleres para chefs.',
-    tags: ['Habanero DO', 'Meliponario Xunan Kab', 'Flores Comestibles', 'Talleres']
+    title: 'Etapa 1: Habanero DO & Meliponas (3.00 HA)',
+    badge: 'Escalamiento Meses 6-12',
+    desc: 'Cultivo con fertirriego por microgoteo de Chile Habanero criollo con Denominación de Origen Península de Yucatán, bancales de flores comestibles y meliponario tradicional.',
+    tags: ['Habanero DO', 'Meliponario Xunan Kab', 'Floricultura Comestible', 'Escuela Viva']
   },
   'etapa-2': {
-    title: 'Etapa 2: Agroforestería & Cítricos Criollos (4.50 HA)',
-    badge: 'Consolidación Meses 12 a 24',
-    surface: '4.50 Hectáreas (45,000 m²)',
-    details: 'Diseño agroforestal estratificado con cítricos de la región (naranja agria, lima, limón mandarina) y nave agroindustrial de deshidratado solar pasivo con inocuidad de grado alimenticio.',
-    tags: ['Agroforestería', 'Cítricos Criollos', 'Deshidratado Solar', 'Grado Alimenticio']
+    title: 'Etapa 2: Agroforestería & Cítricos (4.50 HA)',
+    badge: 'Consolidación Meses 12-24',
+    desc: 'Diseño estratificado con cítricos criollos de Yucatán y nave de transformación agroindustrial con deshidratado solar pasivo en acero inoxidable AISI 304.',
+    tags: ['Agroforestería', 'Cítricos Criollos', 'Deshidratado Solar', 'Inocuidad Grado 304']
   },
   'reserva': {
-    title: 'Reserva Ecológica & Amortiguamiento Biológico (1.50 HA)',
+    title: 'Reserva Ecológica & Amortiguamiento (1.50 HA)',
     badge: 'Conservación Vitalicia',
-    surface: '1.50 Hectáreas (15,000 m²)',
-    details: 'Franja de monte bajo yucateco intangible que funciona como barrera rompevientos natural, refugio para fauna silvestre y hábitat de floración silvestre para polinizadores nativos de la Reserva Cuxtal.',
+    desc: 'Franja intangible de monte bajo yucateco que actúa como barrera biológica contra vientos, refugio de fauna silvestre y corredor de pecoreo de la abeja melipona.',
     tags: ['Monte Bajo Nativo', 'Reserva Cuxtal', 'Corredor Biológico', 'Cero Intervención']
   }
 };
 
-function initZonificationSelector() {
-  const zoneCards = document.querySelectorAll('.zone-item-card');
-  const displayTitle = document.getElementById('zone-detail-title');
-  const displayBadge = document.getElementById('zone-detail-badge');
-  const displaySurface = document.getElementById('zone-detail-surface');
-  const displayDesc = document.getElementById('zone-detail-desc');
-  const displayTags = document.getElementById('zone-detail-tags');
+function initTerritorySelector() {
+  const stageCards = document.querySelectorAll('.territory-stage-card');
+  const displayTitle = document.getElementById('territory-detail-title');
+  const displayBadge = document.getElementById('territory-detail-badge');
+  const displayDesc = document.getElementById('territory-detail-desc');
+  const displayTags = document.getElementById('territory-detail-tags');
 
-  zoneCards.forEach((card) => {
+  stageCards.forEach(card => {
     card.addEventListener('click', () => {
-      const zoneId = card.getAttribute('data-zone');
-      zoneCards.forEach(c => c.classList.remove('active'));
+      stageCards.forEach(c => c.classList.remove('active'));
       card.classList.add('active');
 
-      const data = ZONES_DATA[zoneId];
+      const stageKey = card.getAttribute('data-stage');
+      const data = TERRITORY_STAGES[stageKey];
       if (data && displayTitle) {
         displayTitle.textContent = data.title;
         displayBadge.textContent = data.badge;
-        displaySurface.textContent = data.surface;
-        displayDesc.textContent = data.details;
-
+        displayDesc.textContent = data.desc;
         if (displayTags) {
-          displayTags.innerHTML = data.tags.map(tag => `<span class="crop-tag">${tag}</span>`).join('');
+          displayTags.innerHTML = data.tags.map(t => `<span class="botanic-tag-item">${t}</span>`).join('');
         }
       }
     });
   });
 }
 
-/* --- 4. Filtro del Catálogo de Cultivos --- */
+/* --- 5. FILTRO DEL CATÁLOGO BOTÁNICO --- */
 function initCropsFilter() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const cropCards = document.querySelectorAll('.crop-card');
+  const filterBtns = document.querySelectorAll('.filter-pill-btn');
+  const items = document.querySelectorAll('.botanic-item-card');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      const filter = btn.getAttribute('data-filter');
+      const category = btn.getAttribute('data-category');
 
-      cropCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
+      items.forEach(card => {
+        const itemCat = card.getAttribute('data-category');
+        if (category === 'all' || itemCat === category) {
           card.style.display = 'flex';
-          setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'scale(1)'; }, 10);
+          setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 10);
         } else {
           card.style.opacity = '0';
-          card.style.transform = 'scale(0.95)';
+          card.style.transform = 'translateY(10px)';
           setTimeout(() => { card.style.display = 'none'; }, 200);
         }
       });
@@ -162,7 +211,7 @@ function initCropsFilter() {
   });
 }
 
-/* --- 5. Calculadora Interactiva de Huella & Proximidad --- */
+/* --- 6. CALCULADORA DE IMPACTO Y PROXIMIDAD --- */
 function initImpactCalculator() {
   const slider = document.getElementById('produce-volume-slider');
   const volumeDisplay = document.getElementById('volume-display');
@@ -176,15 +225,8 @@ function initImpactCalculator() {
     const weeklyKg = parseInt(slider.value, 10);
     volumeDisplay.textContent = `${weeklyKg} kg / semana`;
 
-    // Parámetros verificables:
-    // Flete centro de México (Puebla/CDMX) a Mérida: ~1,350 km
-    // Flete Rancho Gema (San Pedro Chimay) a Mérida: 14 km
-    // Ahorro de km de transporte por entrega semanal: ~1,336 km
     const annualDeliveries = 52;
     const kmSavedAnnual = 1336 * annualDeliveries;
-    
-    // Emisión diésel de transporte terrestre refrigerado: ~0.165 kg CO2 por tonelada-km
-    // Toneladas anuales transportadas = (weeklyKg * 52) / 1000
     const tonsAnnual = (weeklyKg * annualDeliveries) / 1000;
     const co2SavedKg = Math.round(tonsAnnual * 1336 * 0.165);
 
@@ -197,7 +239,7 @@ function initImpactCalculator() {
   updateCalculator();
 }
 
-/* --- 6. Botón Flotante Scroll-to-Top --- */
+/* --- 7. BOTÓN FLOTANTE SCROLL TOP --- */
 function initScrollFab() {
   const fab = document.getElementById('fab-scroll-top');
   if (!fab) return;
