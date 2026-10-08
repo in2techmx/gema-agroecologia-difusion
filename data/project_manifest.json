@@ -1,0 +1,135 @@
+{
+  "project_id": "PROJ-GEMA-DIFUSION-V1",
+  "project_title": "Gema Agroecología",
+  "subtitle": "Centro Piloto Demostrativo & Modelo Regenerativo de Especialidad",
+  "status": "Fase Piloto Activa",
+  "location": {
+    "estate": "Rancho Gema",
+    "subcomisaria": "San Pedro Chimay",
+    "municipality_boundary": "Mérida / Timucuy, Yucatán, México",
+    "coordinates": {
+      "latitude": 20.875,
+      "longitude": -89.56,
+      "formatted": "20.8750° N, -89.5600° W"
+    },
+    "logistics": {
+      "distance_merida_periferico_km": 14,
+      "transit_time_minutes": 25,
+      "access_road": "Carretera pavimentada a pie de rancho",
+      "grid_proximity_m": 80
+    }
+  },
+  "land_zonification": {
+    "total_polygon_ha": 10.0,
+    "zones": [
+      {
+        "id": "piloto",
+        "name": "Unidad Piloto Demostrativa",
+        "area_ha": 1.0,
+        "area_m2": 10000,
+        "description": "Invernadero tecnificado de 200 m², camas biointensivas a campo abierto, nave de bioinsumos (Bokashi y biol), zona de secado solar y bodega técnica.",
+        "badge": "Activa / Validación Inmediata"
+      },
+      {
+        "id": "etapa-1",
+        "name": "Etapa 1: Expansión Habanero & Meliponas",
+        "area_ha": 3.0,
+        "area_m2": 30000,
+        "description": "Cultivo intensivo con fertirriego de Chile Habanero (Capsicum chinense DO Yucatán), bancales de flores comestibles, apiario/meliponario tradicional y módulo de talleres gastronómicos.",
+        "badge": "Escalamiento a 12 Meses"
+      },
+      {
+        "id": "etapa-2",
+        "name": "Etapa 2: Agroforestería & Cítricos",
+        "area_ha": 4.5,
+        "area_m2": 45000,
+        "description": "Huertos agroforestales polivarietales de cítricos criollos, frutales locales y nave agroindustrial de deshidratado solar pasivo (acero AISI 304).",
+        "badge": "Consolidación a 24 Meses"
+      },
+      {
+        "id": "reserva",
+        "name": "Reserva Ecológica & Amortiguamiento",
+        "area_ha": 1.5,
+        "area_m2": 15000,
+        "description": "Monte bajo nativo yucateco preservado como santuario biológico, cortina rompevientos y corredor de floración para la abeja Melipona beecheii (Xunan Kab).",
+        "badge": "Preservación Vitalicia"
+      }
+    ]
+  },
+  "edaphic_water": {
+    "soil_type": "Luvisol crómico (Kankab rojo maya)",
+    "soil_properties": "Planicie kárstica con alta retención de humedad, microelementos minerales y respuesta rápida a bioenmiendas microbiológicas.",
+    "topography": "Planicie kárstica con gradiente suave (< 1.5% pendiente)",
+    "aquifer": "Acuífero Cód. 3105 (Península de Yucatán)",
+    "well_depth_m": 18,
+    "static_water_table_m": 7.2
+  },
+  "strategic_channels": [
+    {
+      "id": "horeca",
+      "number": "01",
+      "title": "HORECA & Fine Dining",
+      "description": "Suministro directo a restaurantes de autor, hoteles boutique y cocinas de alta gama en Mérida y corredor Riviera Maya.",
+      "specialty": "Microgreens vivos en charola, brotes crocantes y hojas baby recién cosechadas."
+    },
+    {
+      "id": "mercados",
+      "number": "02",
+      "title": "Mercados Regionales Especializados",
+      "description": "Presencia semanal en mercados orgánicos y redes de Slow Food Mérida con hortalizas de temporada.",
+      "specialty": "Zanahorias arcoíris, kale toscano y canastas botánicas directas de rancho."
+    },
+    {
+      "id": "digital",
+      "number": "03",
+      "title": "Comercio Digital & Canastas por Suscripción",
+      "description": "Pedidos directos a través de plataforma web y mensajería con entrega en frío el mismo día de corte.",
+      "specialty": "Canasta Agroecológica Semanal Chimay con trazabilidad de origen."
+    },
+    {
+      "id": "comunitario",
+      "number": "04",
+      "title": "Economía Comunitaria & Vínculo Local",
+      "description": "Comercialización accesible para vecinos de San Pedro Chimay y Timucuy, reintegrando soberanía alimentaria.",
+      "specialty": "Precios justos, abasto saludable y rescate de variedades tradicionales."
+    },
+    {
+      "id": "talleres",
+      "number": "05",
+      "title": "Agroturismo Educativo & Escuela Viva",
+      "description": "Talleres de microbiología de suelos, elaboración de Bokashi, bioles y agricultura regenerativa biointensiva.",
+      "specialty": "Diplomados para productores campesinos, estudiantes y permacultores."
+    },
+    {
+      "id": "banquetes",
+      "number": "06",
+      "title": "Bodas de Destino & Eventos Exclusivos",
+      "description": "Alianzas estratégicas con Wedding Planners y banquetes en haciendas históricas henequeneras (Hacienda Chimay, Teya, San José).",
+      "specialty": "Flores comestibles frescas, brotes para coctelería y guarniciones vivas."
+    },
+    {
+      "id": "happenings",
+      "number": "07",
+      "title": "Happenings Gastronómicos Pop-Up",
+      "description": "Comidas de autor directamente en las camas de cultivo dirigidas por chefs invitados en colaboración con el rancho.",
+      "specialty": "Experiencias inmersivas del surco a la mesa (Table to Farm)."
+    }
+  ],
+  "governance": [
+    {
+      "name": "Arturo de la Barrera",
+      "role": "Gerencia Operativa & Liderazgo Agronómico",
+      "scope": "Dirección agronómica en finca, manejo de camas biointensivas, inocuidad, bioinsumos y conducción técnica."
+    },
+    {
+      "name": "Arturo Arnaiz",
+      "role": "Dirección de Negocios & Estrategia Tecnológica",
+      "scope": "Estrategia macro-financiera, expansión de canales comerciales, plataforma digital y vinculación de mercados."
+    },
+    {
+      "name": "Gema Romero",
+      "role": "Dirección Legal, Asuntos Institucionales & R.P.",
+      "scope": "Gobernanza societaria, gestión de recursos institucionales, alianzas con comisarías y relaciones públicas."
+    }
+  ]
+}
