@@ -1,8 +1,8 @@
 {
   "project_id": "PROJ-GEMA-DIFUSION-V1",
   "project_title": "Gema Agroecología",
-  "subtitle": "Centro Piloto Demostrativo & Modelo Regenerativo de Especialidad",
-  "status": "Fase Piloto Activa",
+  "subtitle": "Centro Demostrativo de Agricultura Regenerativa, Suelo Vivo & Alta Gastronomía en Yucatán",
+  "status": "Fase Piloto Activa & Living Lab",
   "location": {
     "estate": "Rancho Gema",
     "subcomisaria": "San Pedro Chimay",
@@ -19,48 +19,75 @@
       "grid_proximity_m": 80
     }
   },
+  "benchmarks_integrated": [
+    {
+      "country": "México",
+      "project": "Las Cañadas (Veracruz) & Chinampas Xochimilco",
+      "principle_adopted": "Soberanía biocultural de semillas criollas, bancos vivos de germoplasma y rescate de saberes ancestrales mayas de la milpa."
+    },
+    {
+      "country": "Costa Rica",
+      "project": "Finca Luna Nueva & Rancho Mastatal",
+      "principle_adopted": "Agroforestería sintrópica estratificada, santuario de polinizadores nativos y diseño de granja como ecosistema resiliente."
+    },
+    {
+      "country": "Colombia",
+      "project": "CIPAV & La Cosmopolitana",
+      "principle_adopted": "Ciclos cerrados de biomasa, microorganismos de montaña (MM), bioles fermentados anaeróbicos y cero vertidos contaminantes."
+    },
+    {
+      "country": "España",
+      "project": "La Junquera (Murcia / Regeneration Academy)",
+      "principle_adopted": "Living Lab demostrativo contra el estrés hídrico, diseño en líneas clave (Keyline) y métricas de incremento de materia orgánica en suelo."
+    },
+    {
+      "country": "Países Bajos",
+      "project": "Bodemzicht (Nijmegen)",
+      "principle_adopted": "Manejo biológico sin laboreo (no-till), maximización de la red trófica del suelo (Soil Food Web) y alimentos de ultra alta densidad nutricional."
+    }
+  ],
   "land_zonification": {
     "total_polygon_ha": 10.0,
     "zones": [
       {
         "id": "piloto",
-        "name": "Unidad Piloto Demostrativa",
+        "name": "Unidad Piloto Demostrativa & Living Lab",
         "area_ha": 1.0,
         "area_m2": 10000,
-        "description": "Invernadero tecnificado de 200 m², camas biointensivas a campo abierto, nave de bioinsumos (Bokashi y biol), zona de secado solar y bodega técnica.",
-        "badge": "Activa / Validación Inmediata"
+        "description": "Invernadero bioclimático de 200 m² para microgreens vivos y brotes en charola, camas biointensivas en suelo mejorado Kankab, biofábrica de Bokashi y bioles, y módulo de secado solar pasivo.",
+        "badge": "Activa / Demostración Continua"
       },
       {
         "id": "etapa-1",
-        "name": "Etapa 1: Expansión Habanero & Meliponas",
+        "name": "Etapa 1: Habanero DO & Santuario Melipona",
         "area_ha": 3.0,
         "area_m2": 30000,
-        "description": "Cultivo intensivo con fertirriego de Chile Habanero (Capsicum chinense DO Yucatán), bancales de flores comestibles, apiario/meliponario tradicional y módulo de talleres gastronómicos.",
-        "badge": "Escalamiento a 12 Meses"
+        "description": "Cultivo de Chile Habanero criollo con riego por microgoteo, bancales de flores de corte comestibles, meliponario tradicional maya de Melipona beecheii y aula abierta de campo.",
+        "badge": "Escalamiento Meses 6 a 12"
       },
       {
         "id": "etapa-2",
-        "name": "Etapa 2: Agroforestería & Cítricos",
+        "name": "Etapa 2: Huerto Agroforestal & Transformación",
         "area_ha": 4.5,
         "area_m2": 45000,
-        "description": "Huertos agroforestales polivarietales de cítricos criollos, frutales locales y nave agroindustrial de deshidratado solar pasivo (acero AISI 304).",
-        "badge": "Consolidación a 24 Meses"
+        "description": "Diseño agroforestal multietrato con cítricos criollos de Yucatán y nave de transformación agroindustrial con deshidratado solar pasivo e inocuidad alimentaria.",
+        "badge": "Consolidación Meses 12 a 24"
       },
       {
         "id": "reserva",
         "name": "Reserva Ecológica & Amortiguamiento",
         "area_ha": 1.5,
         "area_m2": 15000,
-        "description": "Monte bajo nativo yucateco preservado como santuario biológico, cortina rompevientos y corredor de floración para la abeja Melipona beecheii (Xunan Kab).",
+        "description": "Franja intangible de monte bajo yucateco que actúa como cortina biológica, refugio de fauna silvestre y corredor de pecoreo para las abejas nativas sin aguijón.",
         "badge": "Preservación Vitalicia"
       }
     ]
   },
   "edaphic_water": {
     "soil_type": "Luvisol crómico (Kankab rojo maya)",
-    "soil_properties": "Planicie kárstica con alta retención de humedad, microelementos minerales y respuesta rápida a bioenmiendas microbiológicas.",
-    "topography": "Planicie kárstica con gradiente suave (< 1.5% pendiente)",
-    "aquifer": "Acuífero Cód. 3105 (Península de Yucatán)",
+    "soil_properties": "Planicie kárstica con alta capacidad de intercambio catiónico, estructurado con humus microbiológico para retención hídrica en sequía.",
+    "topography": "Planicie kárstica ondulada (< 1.5% pendiente media)",
+    "aquifer": "Acuífero Península de Yucatán (Cód. 3105)",
     "well_depth_m": 18,
     "static_water_table_m": 7.2
   },
@@ -68,51 +95,51 @@
     {
       "id": "horeca",
       "number": "01",
-      "title": "HORECA & Fine Dining",
-      "description": "Suministro directo a restaurantes de autor, hoteles boutique y cocinas de alta gama en Mérida y corredor Riviera Maya.",
-      "specialty": "Microgreens vivos en charola, brotes crocantes y hojas baby recién cosechadas."
+      "title": "HORECA Fine Dining & Hoteles Boutique",
+      "description": "Cosecha personalizada en menos de 25 minutos para los restaurantes más aclamados de Mérida y Riviera Maya.",
+      "specialty": "Microgreens vivos en charola con raíz viva, zarcillos de chícharo y flores recién cortadas."
     },
     {
       "id": "mercados",
       "number": "02",
-      "title": "Mercados Regionales Especializados",
-      "description": "Presencia semanal en mercados orgánicos y redes de Slow Food Mérida con hortalizas de temporada.",
-      "specialty": "Zanahorias arcoíris, kale toscano y canastas botánicas directas de rancho."
+      "title": "Mercados Especializados & Slow Food",
+      "description": "Puntos de encuentro semanal con la comunidad de consumidores conscientes en Mérida.",
+      "specialty": "Zanahorias arcoíris, kale toscano, betabeles chioggia y hierbas aromáticas recién cosechadas."
     },
     {
       "id": "digital",
       "number": "03",
-      "title": "Comercio Digital & Canastas por Suscripción",
-      "description": "Pedidos directos a través de plataforma web y mensajería con entrega en frío el mismo día de corte.",
-      "specialty": "Canasta Agroecológica Semanal Chimay con trazabilidad de origen."
+      "title": "Canastas Agroecológicas por Suscripción",
+      "description": "Distribución directa del rancho a los hogares sin intermediarios ni cámaras de maduración artificial.",
+      "specialty": "Cajas semanales de temporada con trazabilidad de origen y frescura garantizada el mismo día."
     },
     {
       "id": "comunitario",
       "number": "04",
-      "title": "Economía Comunitaria & Vínculo Local",
-      "description": "Comercialización accesible para vecinos de San Pedro Chimay y Timucuy, reintegrando soberanía alimentaria.",
-      "specialty": "Precios justos, abasto saludable y rescate de variedades tradicionales."
+      "title": "Economía Comunitaria & Soberanía Alimentaria",
+      "description": "Abasto solidario a precios justos para familias de San Pedro Chimay y Timucuy, con empleo rural digno.",
+      "specialty": "Hortalizas nutritivas accesibles, intercambio de semillas y capacitación campesina."
     },
     {
       "id": "talleres",
       "number": "05",
-      "title": "Agroturismo Educativo & Escuela Viva",
-      "description": "Talleres de microbiología de suelos, elaboración de Bokashi, bioles y agricultura regenerativa biointensiva.",
-      "specialty": "Diplomados para productores campesinos, estudiantes y permacultores."
+      "title": "Living Lab, Talleres & Escuela Viva",
+      "description": "Inmersiones formativas en agricultura biointensiva, microbiología de suelos, Bokashi y meliponicultura.",
+      "specialty": "Cursos y residencias de aprendizaje para agrónomos, chefs, estudiantes y entusiastas."
     },
     {
       "id": "banquetes",
       "number": "06",
-      "title": "Bodas de Destino & Eventos Exclusivos",
-      "description": "Alianzas estratégicas con Wedding Planners y banquetes en haciendas históricas henequeneras (Hacienda Chimay, Teya, San José).",
-      "specialty": "Flores comestibles frescas, brotes para coctelería y guarniciones vivas."
+      "title": "Bodas de Destino en Haciendas Henequeneras",
+      "description": "Proveeduría exclusiva para banquetes de bodas y galas en haciendas históricas de Yucatán.",
+      "specialty": "Flores comestibles para coctelería botánica, brotes delicados y vajillas gastronómicas vivas."
     },
     {
       "id": "happenings",
       "number": "07",
-      "title": "Happenings Gastronómicos Pop-Up",
-      "description": "Comidas de autor directamente en las camas de cultivo dirigidas por chefs invitados en colaboración con el rancho.",
-      "specialty": "Experiencias inmersivas del surco a la mesa (Table to Farm)."
+      "title": "Experiencias Gastronómicas Pop-Up (Table to Farm)",
+      "description": "Encuentros sensoriales entre las camas de cultivo dirigidos por reconocidos chefs de autor invitados.",
+      "specialty": "Menús degustación irrepetibles maridados con ingredientes cortados al instante."
     }
   ],
   "governance": [

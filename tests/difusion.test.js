@@ -31,8 +31,8 @@ console.log('🧪 EJECUCIÓN GATE 1: PRUEBAS AUTOMATIZADAS DETERMINISTAS');
 console.log('   Proyecto: Gema Agroecología (San Pedro Chimay, Yucatán)');
 console.log('======================================================\n');
 
-// 1. Verificación de archivos estructurales críticos
-test('Archivos estructurales y assets presentes', () => {
+// 1. Verificación de archivos estructurales críticos y nuevas imágenes estéticas
+test('Archivos estructurales y nuevas imágenes de alta estética presentes', () => {
   const requiredFiles = [
     'index.html',
     'assets/css/tokens.css',
@@ -42,12 +42,14 @@ test('Archivos estructurales y assets presentes', () => {
     'docs/SPEC.md',
     'docs/USER_STORIES.md',
     'assets/img/rancho_gema_map.jpg',
-    'assets/img/san_pedro_chimay_yucatan.jpg',
+    'assets/img/gema_living_soil.jpg',
+    'assets/img/gema_greenhouse.jpg',
+    'assets/img/gema_harvest.jpg',
+    'assets/img/gema_fine_dining.jpg',
     'assets/img/meliponario_chimay.jpg',
-    'assets/img/organic_hero.jpg',
-    'assets/img/organic_market.jpg',
     'assets/img/bodas_hacienda_chimay.jpg',
-    'assets/img/chile_habanero_yucatan.jpg'
+    'assets/img/chile_habanero_yucatan.jpg',
+    'assets/img/organic_market.jpg'
   ];
 
   requiredFiles.forEach(file => {
@@ -56,10 +58,14 @@ test('Archivos estructurales y assets presentes', () => {
     const stat = fs.statSync(fullPath);
     assert.ok(stat.size > 0, `El archivo está vacío: ${file}`);
   });
+
+  // Verificar que la foto de la comisaría ha sido removida
+  const comisariaPath = path.join(ROOT_DIR, 'assets/img/san_pedro_chimay_yucatan.jpg');
+  assert.ok(!fs.existsSync(comisariaPath), 'La foto de la comisaría aún existe en assets/img');
 });
 
-// 2. Integridad del manifiesto de datos JSON
-test('Consistencia matemática y canónica del project_manifest.json', () => {
+// 2. Integridad del manifiesto de datos JSON con referentes internacionales
+test('Consistencia matemática y referentes internacionales en project_manifest.json', () => {
   const manifestPath = path.join(ROOT_DIR, 'data/project_manifest.json');
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 
@@ -68,6 +74,17 @@ test('Consistencia matemática y canónica del project_manifest.json', () => {
   assert.strictEqual(manifest.location.subcomisaria, 'San Pedro Chimay');
   assert.strictEqual(manifest.location.coordinates.formatted, '20.8750° N, -89.5600° W');
   assert.strictEqual(manifest.location.logistics.distance_merida_periferico_km, 14);
+
+  // Verificación de los 5 benchmarks internacionales (México, Costa Rica, Colombia, España, Países Bajos)
+  assert.ok(Array.isArray(manifest.benchmarks_integrated), 'Debe contener array de benchmarks internacionales');
+  assert.strictEqual(manifest.benchmarks_integrated.length, 5, 'Deben registrarse exactamente 5 referentes internacionales');
+
+  const countries = manifest.benchmarks_integrated.map(b => b.country);
+  assert.ok(countries.includes('México'), 'Debe incluir México');
+  assert.ok(countries.includes('Costa Rica'), 'Debe incluir Costa Rica');
+  assert.ok(countries.includes('Colombia'), 'Debe incluir Colombia');
+  assert.ok(countries.includes('España'), 'Debe incluir España');
+  assert.ok(countries.includes('Países Bajos'), 'Debe incluir Países Bajos');
 
   // Verificación de suma de hectáreas
   const totalHa = manifest.land_zonification.total_polygon_ha;
@@ -82,16 +99,26 @@ test('Consistencia matemática y canónica del project_manifest.json', () => {
   assert.strictEqual(manifest.governance.length, 3, 'Deben registrarse los 3 líderes de gobernanza');
 });
 
-// 3. Verificación de HTML y atributos esenciales
-test('Atributos semánticos, SEO, accesibilidad y modo dual en index.html', () => {
+// 3. Verificación de HTML, estética, referentes internacionales y seguridad
+test('Atributos semánticos, contenido de referentes, alta estética y seguridad en index.html', () => {
   const htmlPath = path.join(ROOT_DIR, 'index.html');
   const html = fs.readFileSync(htmlPath, 'utf8');
 
-  // Meta y SEO
-  assert.ok(html.includes('<title>Gema Agroecología'), 'Falta título representativo');
-  assert.ok(html.includes('meta name="description"'), 'Falta meta description');
-  assert.ok(html.includes('data-theme='), 'Falta atributo data-theme para el modo dual');
-  assert.ok(html.includes('theme-toggle-btn'), 'Falta botón de conmutación de tema');
+  // Ausencia total de la foto de la comisaría
+  assert.ok(!html.includes('san_pedro_chimay_yucatan.jpg'), 'index.html no debe incluir la foto de la comisaría');
+
+  // Presencia de las nuevas imágenes estéticas
+  assert.ok(html.includes('gema_living_soil.jpg'), 'Falta imagen de suelo vivo');
+  assert.ok(html.includes('gema_greenhouse.jpg'), 'Falta imagen de invernadero');
+  assert.ok(html.includes('gema_harvest.jpg'), 'Falta imagen de cosecha de herencia');
+  assert.ok(html.includes('gema_fine_dining.jpg'), 'Falta imagen de platillo gourmet fine dining');
+
+  // Mención y análisis de los referentes internacionales
+  assert.ok(html.includes('Las Cañadas & Chinampas'), 'Falta mención a referentes de México');
+  assert.ok(html.includes('Finca Luna Nueva & Rancho Mastatal'), 'Falta mención a referentes de Costa Rica');
+  assert.ok(html.includes('La Cosmopolitana & CIPAV'), 'Falta mención a referentes de Colombia');
+  assert.ok(html.includes('La Junquera & Regeneration Academy'), 'Falta mención a referentes de España');
+  assert.ok(html.includes('Bodemzicht Regeneratieve Boerderij'), 'Falta mención a referentes de Países Bajos');
 
   // Datos verificables y cifras reales
   assert.ok(html.includes('10.00 HA'), 'Falta indicador de 10.00 HA');

@@ -1,4 +1,4 @@
-# Gema Agroecología — Plataforma Web de Difusión y Posicionamiento Regional
+# Gema Agroecología — Plataforma Web de Difusión, Suelo Vivo & Referente Regional
 
 **Proyecto:** `PROJ-GEMA-DIFUSION-V1`  
 **Sede Operativa:** Rancho Gema &middot; Subcomisaría de San Pedro Chimay, Yucatán, México  
@@ -8,18 +8,28 @@
 
 ---
 
-## 🌿 Concepto y Propuesta de Valor
+## 🌿 Concepto y Posicionamiento como Referente Regional
 
-**Gema Agroecología** es un modelo demostrativo de agricultura regenerativa y biointensiva de especialidad ubicado a solo 14 km del Periférico de Mérida (25 minutos de los distritos culinarios de la capital yucateca y enlace directo a la Riviera Maya).
+**Gema Agroecología** sintetiza la sabiduría ancestral campesina de la milpa maya con la ciencia de vanguardia del suelo vivo (*The Living Soil Science*). 
 
-Esta plataforma web institucional tiene como objetivo posicionar el proyecto como el **referente de excelencia agroecológica de la región**, exhibiendo:
-- **Calidad de Lanzamiento y Diseño Vanguardista:** Interfaz interactiva de alta gama con foco magnético de cursor (*Spotlight*) y efecto *Tilt 3D* físico (técnica de Rodri González).
-- **Modo Dual Eco-Tech:** Tema *Dark Obsidian Jungle* (por defecto) y *Light Cristalino Botánico* con persistencia en cliente.
-- **Rigor y Trazabilidad:** Cero cifras inventadas; fidelidad absoluta al Documento Maestro V3.2 de San Pedro Chimay.
-- **Planimetría y Zonificación Dinámica (10.00 HA):** Unidad Piloto Activa (1.00 HA + Invernadero Tecnificado de 200 m²), Etapa 1 Habanero & Meliponas (3.00 HA), Etapa 2 Agroforestal & Cítricos (4.50 HA) y Reserva de Monte Bajo (1.50 HA).
-- **Catálogo Botánico Vivo:** Microgreens vivos en charola, hortalizas de herencia en suelo Luvisol crómico (*Kankab*), Chile Habanero con Denominación de Origen, flores comestibles y miel medicinal de abeja *Melipona beecheii* (Xunan Kab).
-- **Los 7 Canales Comerciales Estratégicos:** HORECA, Mercados Slow Food, Venta Digital, Economía Comunitaria, Escuela Viva, Bodas en Haciendas y Happenings Gastronómicos Pop-Up.
-- **Calculadora Interactiva de Huella de Carbono y Proximidad:** Simulación viva del ahorro logístico al sustituir fletes desde el centro del país (~1,350 km) por abasto hiperlocal de San Pedro Chimay (~14 km).
+Inspirado en los modelos agroecológicos y granjas demostrativas más influyentes del mundo:
+- 🇲🇽 **México:** Las Cañadas (Veracruz) & Chinampas de Xochimilco — Rescate biocultural y soberanía de semillas criollas.
+- 🇨🇷 **Costa Rica:** Finca Luna Nueva & Rancho Mastatal — Agroforestería sintrópica y santuarios de biodiversidad.
+- 🇨🇴 **Colombia:** CIPAV & La Cosmopolitana — Ciclos cerrados de nutrientes, bioles anaeróbicos y microorganismos de montaña.
+- 🇪🇸 **España:** La Junquera (Murcia / Regeneration Academy) — *Living Lab* demostrativo, diseño en líneas clave y restauración kárstica.
+- 🇳🇱 **Países Bajos:** Bodemzicht Regeneratieve Boerderij — Agricultura biointensiva sin arado (*no-till*) y alimentos de máxima densidad nutricional.
+
+---
+
+## 📸 Dirección de Arte & Estética Visual de Vanguardia
+
+La plataforma integra una suite fotográfica documental y sensorial que transmite la riqueza biológica de Rancho Gema:
+1. **Suelo Vivo & Brote Tierno:** Primer plano de manos campesinas sosteniendo tierra viva Luvisol (*Kankab*) con rocío de la mañana.
+2. **Invernadero Bioclimático Tecnificado:** Vista interior de los 200 m² de microaspersión, estanterías verticales y bandejas de microgreens en raíz viva.
+3. **Cosecha de Herencia:** Bodegón artesanal con betabeles chioggia, zanahorias baby arcoíris, flores comestibles y chile habanero criollo con DO.
+4. **Alta Cocina Fine-Dining:** Emplatado de alta cocina con brotes vivos y flores de Rancho Gema servidos en los mejores restaurantes de Mérida y Riviera Maya.
+5. **Santuario Melipona:** Jobones tradicionales de abeja maya *Melipona beecheii* (Xunan Kab).
+6. **Planimetría GIS:** Cartografía satelital oficial del polígono de 10.00 HA en San Pedro Chimay.
 
 ---
 
@@ -27,7 +37,7 @@ Esta plataforma web institucional tiene como objetivo posicionar el proyecto com
 
 ```
 gema-agroecologia-difusion/
-├── index.html                     # Portal web de difusión institucional
+├── index.html                     # Portal web de difusión institucional y living lab
 ├── README.md                      # Documentación maestra y enlaces de despliegue
 ├── SECURITY.md                    # Dictamen Gate 2 (Agente AS - Cero Secretos)
 ├── AUDIT.md                       # Dictamen Gate 3 (Agente AA - Fidelidad Narrativa)
@@ -38,9 +48,9 @@ gema-agroecologia-difusion/
 │   │   └── style.css              # Estilos de vanguardia y spotlight magnético
 │   ├── js/
 │   │   └── main.js                # Interactividad, tilt 3D y calculadora
-│   └── img/                       # Fotografía documental y planimetría satelital
+│   └── img/                       # Fotografía editorial y planimetría satelital
 ├── data/
-│   └── project_manifest.json      # Manifiesto de datos técnicos canónicos
+│   └── project_manifest.json      # Manifiesto de datos canónicos y benchmarks
 ├── docs/
 │   ├── SPEC.md                    # Especificación Funcional (FS-QA 2.0)
 │   └── USER_STORIES.md            # Historias de Usuario en formato Gherkin
@@ -57,8 +67,8 @@ gema-agroecologia-difusion/
    node tests/difusion.test.js
    ```
    *Resultado:* 4/4 pruebas unitarias deterministas en verde (Exit Code 0).
-2. **Gate 2 (Seguridad):** Aprobado por el Agente AS (`SECURITY.md`). Cero secretos, sin CDNs opacos y sanitización `rel="noopener"`.
-3. **Gate 3 (Auditoría y Trazabilidad):** Aprobado por el Agente AA (`AUDIT.md`). Correspondencia 100% fiel con el Documento Maestro V3.2.
+2. **Gate 2 (Seguridad):** Aprobado por el Agente AS (`SECURITY.md`). Cero secretos expuestos, sin dependencias externas inseguras y sanitización de enlaces externos.
+3. **Gate 3 (Auditoría y Trazabilidad):** Aprobado por el Agente AA (`AUDIT.md`). Correspondencia 100% fiel con el Documento Maestro V3.2 e integración de los referentes globales.
 
 ---
 

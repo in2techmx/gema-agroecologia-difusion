@@ -1066,3 +1066,120 @@ input[type="range"] {
     height: 260px;
   }
 }
+
+/* --- Cuadrícula de Referentes Internacionales (Benchmark Global) --- */
+.benchmark-section {
+  background: var(--bg-deep);
+  border-block: 1px solid var(--border-subtle);
+}
+
+.benchmark-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.5rem;
+}
+
+.benchmark-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: var(--surface-glass);
+  border: 1px solid var(--border-subtle);
+  padding: 1.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-smooth);
+}
+
+.benchmark-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-md);
+}
+
+.benchmark-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.benchmark-country-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-emerald);
+}
+
+.benchmark-source-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.benchmark-principle-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.benchmark-adoption-box {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border-subtle);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.benchmark-adoption-box strong {
+  color: var(--accent-emerald);
+}
+
+/* --- Manifiesto Editorial --- */
+.manifesto-box {
+  position: relative;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(11, 19, 14, 0.85) 100%);
+  border: 1px solid var(--border-glow);
+  padding: 3.5rem 3rem;
+  margin-bottom: 4rem;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.manifesto-text-huge {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.manifesto-lead-quote {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 900px;
+}
+
+/* --- Split Showcase Gastronómico & Raíz Viva --- */
+.chef-split-showcase {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+@media (max-width: 992px) {
+  .chef-split-showcase {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
